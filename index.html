@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Swerve Drive 101</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            colors: {
+              robot: {
+                base: '#3b82f6', // blue-500
+                accent: '#1d4ed8', // blue-700
+                wheel: '#1f2937', // gray-800
+                vector: '#f59e0b', // amber-500
+                field: '#e5e7eb', // gray-200
+              }
+            }
+          }
+        }
+      }
+    </script>
+    <style>
+      body { margin: 0; font-family: 'Inter', sans-serif; -webkit-font-smoothing: antialiased; }
+      /* Custom scrollbar for cleaner look */
+      ::-webkit-scrollbar { width: 8px; }
+      ::-webkit-scrollbar-track { background: transparent; }
+      ::-webkit-scrollbar-thumb { background: #cbd5e1; border-radius: 4px; }
+      ::-webkit-scrollbar-thumb:hover { background: #94a3b8; }
+    </style>
+  <script type="importmap">
+{
+  "imports": {
+    "react-dom/": "https://aistudiocdn.com/react-dom@^19.2.0/",
+    "react/": "https://aistudiocdn.com/react@^19.2.0/",
+    "react": "https://aistudiocdn.com/react@^19.2.0"
+  }
+}
+</script>
+</head>
+  <body>
+    <div id="root"></div>
+  </body>
+</html>

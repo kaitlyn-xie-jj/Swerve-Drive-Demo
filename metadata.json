@@ -1,0 +1,5 @@
+{
+  "name": "Swerve Drive Demo",
+  "description": "An interactive educational tool for team students to understand the mechanics and kinematics of swerve drive chassis systems.",
+  "requestFramePermissions": []
+}
