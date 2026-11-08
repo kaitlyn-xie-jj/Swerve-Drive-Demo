@@ -31,6 +31,12 @@ npm run build
 npm run preview
 ```
 
+To run the numerical regression tests (requires **Node.js 22+**):
+
+```bash
+npm test
+```
+
 **A Gemini API key is not needed.** This demo does not call Gemini or another model API. The old README and Vite configuration contained unused AI Studio key setup, which has been removed.
 
 ## Swerve kinematics
