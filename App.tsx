@@ -44,13 +44,16 @@ const App: React.FC = () => {
                 ← Previous
             </button>
 
-            <div className="flex items-center gap-2">
+            <div className="flex items-center gap-2" role="group" aria-label="Choose a swerve drive scene">
                 {scenes.map((s, idx) => (
                     <button 
+                        type="button"
                         key={idx}
                         onClick={() => setCurrentScene(idx)}
-                        className={`w-3 h-3 rounded-full transition-all duration-300 ${idx === currentScene ? 'bg-robot-accent w-8' : 'bg-slate-300 hover:bg-slate-400'}`}
+                        className={`w-3 h-3 rounded-full transition-all duration-300 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue-700 ${idx === currentScene ? 'bg-robot-accent w-8' : 'bg-slate-300 hover:bg-slate-400'}`}
                         title={s.title}
+                        aria-label={`Go to ${s.title}`}
+                        aria-current={idx === currentScene ? "step" : undefined}
                     />
                 ))}
             </div>
@@ -63,7 +66,7 @@ const App: React.FC = () => {
                 Next →
             </button>
         </div>
-        <div className="text-center mt-2 text-xs text-slate-400 font-mono">
+        <div className="text-center mt-2 text-xs text-slate-400 font-mono" aria-live="polite">
             {scenes[currentScene].title}
         </div>
       </footer>
