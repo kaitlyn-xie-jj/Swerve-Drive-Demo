@@ -1,5 +1,5 @@
 
-import { SwerveModuleState } from '../types';
+import type { SwerveModuleState } from '../types';
 
 const RAD_TO_DEG = 180 / Math.PI;
 
