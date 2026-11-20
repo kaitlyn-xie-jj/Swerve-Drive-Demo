@@ -43,3 +43,25 @@ test('angles wrap into (-180, 180] consistently', () => {
   assert.equal(normalizeAngle(-190), 170);
   assert.equal(normalizeAngle(-180), 180);
 });
+
+test('steering optimization preserves the velocity vector and limits steering travel', () => {
+  const radians = angle => angle * Math.PI / 180;
+  for (const current of [-720, -180, -90, 0, 90, 179, 720]) {
+    for (let target = -360; target <= 360; target += 15) {
+      const state = optimizeModuleState(target, 2.5, current);
+      assert.ok(Math.abs(state.angle - current) <= 90 + 1e-10);
+      assert.ok(Math.abs(state.speed * Math.cos(radians(state.angle)) - 2.5 * Math.cos(radians(target))) < 1e-10);
+      assert.ok(Math.abs(state.speed * Math.sin(radians(state.angle)) - 2.5 * Math.sin(radians(target))) < 1e-10);
+    }
+  }
+});
+
+test('rectangular chassis has tangential speeds and zero net translation in pure yaw', () => {
+  const modules = calculateSwerveStates(0, 0, -2, 0.4, 0.8);
+  for (const m of modules) {
+    assert.ok(Math.abs(m.velocity.x * m.position.x + m.velocity.y * m.position.y) < 1e-12);
+    assert.ok(Math.abs(m.speed - 2 * Math.hypot(0.2, 0.4)) < 1e-12);
+  }
+  assert.ok(Math.abs(modules.reduce((sum, m) => sum + m.velocity.x, 0)) < 1e-12);
+  assert.ok(Math.abs(modules.reduce((sum, m) => sum + m.velocity.y, 0)) < 1e-12);
+});
